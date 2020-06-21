@@ -5,13 +5,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 function htmlWebpackPlugin(name){
     return new HtmlWebpackPlugin({
         filename: `${name}.html`,
-        template: `./app/page/${name}.pug`
+        template: `./app/pages-site/${name}/${name}.pug`
     })
 }
 
 module.exports = {
     mode: 'development',
-    entry: './app/main.js',
+    entry: './app/index.js',
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: '[name].js'
@@ -31,21 +31,24 @@ module.exports = {
             test: /\.pug$/,
             use: ['pug-loader']
         },{
+            test: /\.scss$/,
+            use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+        },{
             test: /\.css$/,
-            use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader']
+            use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
         }]
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'main.css'
+            filename: '[name].css'
         }),
         htmlWebpackPlugin('colors-types'),
-        htmlWebpackPlugin('form-elements'),
+  /*      htmlWebpackPlugin('form-elements'),
         htmlWebpackPlugin('headers-footers'),
-        htmlWebpackPlugin('cards'),
-        htmlWebpackPlugin('landing'),
+        htmlWebpackPlugin('cards'),*/
+        htmlWebpackPlugin('landing')/*,
         htmlWebpackPlugin('login'),
         htmlWebpackPlugin('room'),
-        htmlWebpackPlugin('search-room')
+        htmlWebpackPlugin('search-room')*/
     ]
 }
