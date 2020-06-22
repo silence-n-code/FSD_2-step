@@ -11,7 +11,7 @@ function htmlWebpackPlugin(name){
 
 module.exports = {
     mode: 'development',
-    entry: './app/index.js',
+    entry: './app/main.js',
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: '[name].js'
@@ -42,10 +42,11 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].css'
         }),
-        htmlWebpackPlugin('colors-types'),
-  /*      htmlWebpackPlugin('form-elements'),
+        htmlWebpackPlugin('index'),
+        htmlWebpackPlugin('colors-types')/*,
+        htmlWebpackPlugin('form-elements'),
         htmlWebpackPlugin('headers-footers'),
-        htmlWebpackPlugin('cards'),*/
+        htmlWebpackPlugin('cards')*/,
         htmlWebpackPlugin('landing')/*,
         htmlWebpackPlugin('login'),
         htmlWebpackPlugin('room'),
