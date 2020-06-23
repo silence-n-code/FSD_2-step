@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 function htmlWebpackPlugin(name){
     return new HtmlWebpackPlugin({
         filename: `${name}.html`,
-        template: `./app/pages-site/${name}/${name}.pug`
+        template: `./app/page/${name}/${name}.pug`
     })
 }
 
@@ -43,13 +43,13 @@ module.exports = {
             filename: '[name].css'
         }),
         htmlWebpackPlugin('index'),
-        htmlWebpackPlugin('colors-types')/*,
-        htmlWebpackPlugin('form-elements'),
-        htmlWebpackPlugin('headers-footers'),
-        htmlWebpackPlugin('cards')*/,
-        htmlWebpackPlugin('landing')/*,
-        htmlWebpackPlugin('login'),
-        htmlWebpackPlugin('room'),
-        htmlWebpackPlugin('search-room')*/
+        htmlWebpackPlugin('UI-colors-type'),
+        htmlWebpackPlugin('UI-form-elements'),
+        htmlWebpackPlugin('UI-headers-footers'),
+        htmlWebpackPlugin('UI-cards'),
+        htmlWebpackPlugin('landing'),
+        htmlWebpackPlugin('registration'),
+        htmlWebpackPlugin('room-details'),
+        htmlWebpackPlugin('search-room')
     ]
 }

@@ -1,0 +1,32 @@
+extends ../../templates/default.pug
+
+mixin elementMenu(isClass, element)
+    li(class="menu-list-element " + isClass)
+       a(href=element.url, class="menu-list-element-a") #{element.text}
+
+mixin menu(numPage)
+    naw.menu
+        ul.menu-list.js-menu-button
+            -
+                let menu = [
+                    {url: "/UI-colors-type.html", text: "Colors&Type"},
+                    {url: "/UI-form-elements.html", text: "Form elements"},
+                    {url: "/UI-headers-footers.html", text: "Headers&Footers"},
+                    {url: "/UI-cards.html", text: "Cards"},
+                    {url: "/landing.html", text: "Landing Page"},
+                    {url: "/registration.html", text: "Sign in"},
+                    {url: "/room-details.html", text: "Room details"},
+                    {url: "/search-room.html", text: "Search room"}
+                ]
+            each element,i in menu
+                if numPage === i
+                    +elementMenu("is-active", element)
+                else
+                    +elementMenu("", element)
+
+block variables
+    - var pageTitle = 'Toxin Hotel site'
+
+block content
+    h1.h1 Toxin Hotel site
+    +menu(0)
