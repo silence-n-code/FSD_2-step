@@ -1,6 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+const PATHS = {
+    src: path.join(__dirname, "./app"),
+    dist: path.join(__dirname, "./dist"),
+    assets: "assets/"
+  };
 
 function htmlWebpackPlugin(name){
     return new HtmlWebpackPlugin({
@@ -28,6 +35,19 @@ module.exports = {
             loader: 'babel-loader',
             exclude: '/node_modules/'
         },{
+            // images / icons
+            test: /\.(png|jpg|gif|svg)$/,
+            loader: "file-loader",
+            options: {
+                name: "[name].[ext]"
+            }
+        },{
+            test: /\.(woff(2)?|ttf|svg)(\?v=\d+\.\d+\.\d+)?$/,
+            loader: "file-loader",
+            options: {
+                name: "[name].[ext]"
+            }
+        },{
             test: /\.pug$/,
             use: ['pug-loader']
         },{
@@ -41,6 +61,13 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: '[name].css'
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img` },
+                { from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts` }/*,
+                { from: `${PATHS.src}/static`, to: "" } */
+            ],
         }),
         htmlWebpackPlugin('index'),
         htmlWebpackPlugin('UI-colors-type'),
