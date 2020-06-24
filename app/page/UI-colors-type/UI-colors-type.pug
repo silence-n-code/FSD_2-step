@@ -1,6 +1,30 @@
 extends ../../templates/default.pug
+
 block variables
     - var pageTitle = 'Colors&Type'
 
 block content
-    h1.h1 Colors&Type
+    //include ../../blocks/logo/logo-gray
+    .colors
+        .color-DarkShade100 Dark Shade 100%
+            p.color-hash #1F2041
+        .color-DarkShade75 Dark Shade 75%
+            p.color-hash #1F2041
+        .color-DarkShade50 Dark Shade 50%
+            p.color-hash #1F2041
+        .color-DarkShade25 Dark Shade 25%
+            p.color-hash #1F2041
+        .color-DarkShade5 Dark Shade 5%
+            p.color-hash #1F2041
+        .color-Purple Purple
+            p.color-hash #BC9CFF
+        .color-Green Green
+            p.color-hash #6FCF97
+    .type
+        h1.h1 This one is the sub-section or
+            p.h1 widget title
+        h2.hpNext one is the item title inside
+            p.h2 widgets
+        h3.hpTHIS IS A LABLE OR CTA TEXT
+        bodypody This is the body text which is used for most
+            p.body of the design, like paragraphs, lists, etc. 
